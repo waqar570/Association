@@ -1,0 +1,20 @@
+<p>
+    <strong>Book_Name:</strong>
+    <%= book.name %>
+</p>
+
+<p>
+    <strong>Author_id:</strong>
+    <%= book.author_id %>
+</p>
+
+<p>
+  <strong>Published_at:</strong>
+  <%= book.published_at %>
+</p>
+
+<p>
+  <%= link_to 'Destroy Book', [book.author, book],
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</p>
