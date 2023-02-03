@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_03_115155) do
+ActiveRecord::Schema.define(version: 2023_02_03_131658) do
+
+  create_table "account_histories", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "credit_rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "accounts", force: :cascade do |t|
     t.integer "supplier_id"
@@ -43,6 +50,8 @@ ActiveRecord::Schema.define(version: 2023_02_03_115155) do
 
   create_table "patients", force: :cascade do |t|
     t.string "name"
+    t.integer "account_id"
+    t.integer "credit_rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -53,7 +62,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_115155) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "supliers", force: :cascade do |t|
+  create_table "suppliers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
