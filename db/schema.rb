@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_05_173559) do
+ActiveRecord::Schema.define(version: 2023_02_06_115938) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "account_id"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2023_02_05_173559) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "title"
+  end
+
+  create_table "book_orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "books", force: :cascade do |t|
@@ -47,10 +55,39 @@ ActiveRecord::Schema.define(version: 2023_02_05_173559) do
     t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.integer "year_published"
+    t.integer "isbn"
+    t.decimal "price"
+    t.boolean "out_of_print"
+    t.integer "views"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "title"
+    t.string "email"
+    t.integer "visits"
+    t.integer "order_counts"
+    t.integer "lock_version"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.time "date_submitted"
+    t.integer "status"
+    t.decimal "subtotal"
+    t.decimal "shipping"
+    t.decimal "tax"
+    t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -79,6 +116,15 @@ ActiveRecord::Schema.define(version: 2023_02_05_173559) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "rating"
+    t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
