@@ -14,9 +14,10 @@ class AuthorsController < ApplicationController
   end
   def create
     @author = Author.new(author_params)
-
     if @author.save
-      redirect_to @author
+      AMailer.send_signup_email(@author).deliver
+      redirect_to(@author, :notice => 'Author is created')
+      #redirect_to @author
     else
       #render :new
       flash.now[:error] = "Could not save Author"

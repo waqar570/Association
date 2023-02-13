@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   root "authors#index"
   # get 'authors/index'
   # get "/authors", to: "authors#index"
