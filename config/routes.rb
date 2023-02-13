@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # get 'authors/index'
   # get "/authors", to: "authors#index"
   # get "/authors/:id", to: "authors#show"
+
+  get "authors/fetch_author_pdf/:id", to: "authors#download_pdf"
+
+  #get '/authors/:id', to: 'authors#generate_pdf'
   resources :authors do
     resources :books
   end
