@@ -1,7 +1,7 @@
 require "prawn"
 
 class AuthorsController < ApplicationController
-  # http_basic_authenticate_with name: "dhh", password: "secret", 
+  # http_basic_authenticate_with name: "dhh", password: "secret",
   #  except: [:index, :show]
   def index
     @authors = Author.all
@@ -15,7 +15,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      AMailer.send_signup_email(@author).deliver
+      AMailer.send_signup_email(@author).deliver_later
       redirect_to(@author, :notice => 'Author is created')
       #redirect_to @author
     else
